@@ -1,12 +1,12 @@
 import {pool} from './database.js';
 
 class ConsultaController{
-
+// Toma los datos de la base "libros"
     async getAll(req, res) {        
         const [result] = await pool.query('SELECT * FROM libros');
         res.json(result);
     }
-
+// Muestra los datos de la base "libros" y muestra el ID con el que se guarda el libro
     async add(req, res){
         const libro = req.body;
         const [result] = await pool.query(
@@ -15,14 +15,14 @@ class ConsultaController{
         );
         res.json({"Id insertado": result.insertId});
     }
-
+// Elimina un libro de la base segun su ISBN
     async delete(req, res){
         const libro = req.body;
         const [result] = await pool.query(
-            `DELETE FROM libros WHERE id=(?)`,
-            [libro.id]
+            `DELETE FROM libros WHERE ISBN=(?)`,
+            [libro.ISBN]
         );
-        res.json({"Libros eliminados": result.affectedRows});
+        res.json({"Libros eliminados segun ISBN": result.affectedRows});
     }
 }
 
