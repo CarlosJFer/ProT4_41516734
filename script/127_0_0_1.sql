@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-08-2024 a las 05:20:01
+-- Tiempo de generación: 18-08-2024 a las 21:57:28
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -28,8 +28,8 @@ USE `libros`;
 --
 -- Estructura de tabla para la tabla `libros`
 --
--- Creación: 18-08-2024 a las 03:05:15
--- Última actualización: 18-08-2024 a las 03:09:02
+-- Creación: 18-08-2024 a las 19:38:09
+-- Última actualización: 18-08-2024 a las 19:37:02
 --
 
 CREATE TABLE `libros` (
@@ -50,7 +50,8 @@ INSERT INTO `libros` (`id`, `nombre`, `autor`, `categoria`, `año_publicacion`, 
 (2, '1984', 'George Orwell', 'Ciencia Ficción', '1949-06-08', '9780451524935'),
 (3, 'El Señor de los Anillos', 'J.R.R. Tolkien', 'Fantasía', '1954-07-29', '9780261102385'),
 (4, 'Don Quijote de la Mancha', 'Miguel de Cervantes', 'Novela', '1605-01-16', '9780060934347'),
-(5, 'Matar a un ruiseñor', 'Harper Lee', 'Novela', '1960-07-11', '9780061120084');
+(5, 'Matar a un ruiseñor', 'Harper Lee', 'Novela', '1960-07-11', '9780061120084'),
+(9, 'El padrino', 'Carlos Fernandez', 'Criminal', '1969-06-05', '111');
 
 --
 -- Índices para tablas volcadas
@@ -60,7 +61,10 @@ INSERT INTO `libros` (`id`, `nombre`, `autor`, `categoria`, `año_publicacion`, 
 -- Indices de la tabla `libros`
 --
 ALTER TABLE `libros`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `ISBN` (`ISBN`),
+  ADD UNIQUE KEY `id` (`id`),
+  ADD UNIQUE KEY `nombre` (`nombre`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -70,7 +74,7 @@ ALTER TABLE `libros`
 -- AUTO_INCREMENT de la tabla `libros`
 --
 ALTER TABLE `libros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
