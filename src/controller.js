@@ -15,6 +15,15 @@ class ConsultaController{
         );
         res.json({"Id insertado": result.insertId});
     }
+
+    async delete(req, res){
+        const libro = req.body;
+        const [result] = await pool.query(
+            `DELETE FROM libros WHERE id=(?)`,
+            [libro.id]
+        );
+        res.json({"Libros eliminados": result.affectedRows});
+    }
 }
 
 export const consulta = new ConsultaController();
