@@ -15,6 +15,16 @@ class ConsultaController{
         );
         res.json({"Id insertado": result.insertId});
     }
+// Actualiza los libros
+    async update(req, res) {
+    const libro = req.body;
+    const [result] = await pool.query(
+        `UPDATE libros SET nombre = ?, autor = ?, categoria = ?, año_publicacion = ?, ISBN = ? WHERE id = ?`,
+        [libro.nombre, libro.autor, libro.categoria, libro.año_publicacion, libro.ISBN, libro.id]
+    );
+    res.json({"Los registros actualizados son": result.changedRows});
+}
+
 // Elimina un libro de la base segun su ISBN
     async delete(req, res){
         const libro = req.body;
